@@ -25,6 +25,10 @@ class Draw extends JPanel {
 
         super.paintComponent(g);
         this.setBackground(Color.BLACK);
+        g.setColor(Color.white);
+        g.drawString("Click to draw Point | Enter = Start | C = Clear | ESC = Exit ", 0, 15);
+        g.setColor(Color.red);
+        g.drawString("Attention: min points to start drawing is two points ", 0, 30);
         List<Point> oldPoints = window.getPoints();
         for (Point p : oldPoints) {
             g.setColor(Color.white);
@@ -32,10 +36,11 @@ class Draw extends JPanel {
         }
 
         if (window.getIsStarted()) {
-            System.out.println(window.getSteps());
+            g.setColor(Color.green);
+            g.drawString(String.format("Step:%d", window.getSteps() + 1), 750, 15);
             List<Point> newPoints = window.getCurrPoints();
             if (window.getSteps() > 0) {
-                newPoints=chaikinAlgo(newPoints, oldPoints.get(0), oldPoints.get(oldPoints.size()-1));
+                newPoints = chaikinAlgo(newPoints, oldPoints.get(0), oldPoints.get(oldPoints.size() - 1));
                 window.setCurrPoints(newPoints);
             }
 
@@ -46,7 +51,7 @@ class Draw extends JPanel {
                 g.drawLine(p1.getX(), p1.getY(), p2.getX(), p2.getY());
             }
             window.incSteps();
-            if (window.getSteps()>6){
+            if (window.getSteps() > 6) {
                 window.setSteps(0);
                 window.setCurrPoints(oldPoints);
             }

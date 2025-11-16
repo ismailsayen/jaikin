@@ -3,10 +3,17 @@ package Jaikin;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MouseListner extends Window implements MouseListener {
+public class MouseListner implements MouseListener {
+     private Window window;
+
+    public MouseListner(Window window) {
+        this.window = window;
+    }
     @Override 
     public void mouseClicked(MouseEvent e){
-        System.out.println(e);
+        Point p=new Point(e.getX(), e.getY());
+        window.getPoints().add(p);
+        window.getFrame().repaint();
     }
     @Override 
     public void mouseEntered(MouseEvent e){

@@ -9,11 +9,15 @@ import javax.swing.JPanel;
 public class Window {
     private JFrame frame;
     private List<Point> points;
+    private List<Point> currPoints;
+    
     private boolean isStated;
+    private int steps;
 
     public Window() {
         this.frame = new JFrame("JAINKIN");
         this.points = new ArrayList<>();
+        this.currPoints=new ArrayList<>();
         this.isStated = false;
     }
 
@@ -42,6 +46,25 @@ public class Window {
 
     public void setPoints(List<Point> p) {
         this.points = p;
+    }
+    public List<Point> getCurrPoints() {
+        return this.currPoints;
+    }
+
+    public void setCurrPoints(List<Point> p) {
+        this.currPoints = p;
+    }
+
+    public int getSteps() {
+        return this.steps;
+    }
+
+    public void setSteps(int p) {
+        this.steps = p;
+    }
+
+    public void incSteps() {
+        this.steps += 1;
     }
 
     public boolean getIsStarted() {

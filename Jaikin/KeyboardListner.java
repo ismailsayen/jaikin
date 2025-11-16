@@ -18,8 +18,11 @@ public class KeyboardListner implements KeyListener {
                 System.exit(0);
                 break;
             case 10:
+                if (window.getPoints().size() == 0) {
+                    return;
+                }
                 window.setIsStarted(true);
-                window.getFrame().repaint();
+
             default:
                 break;
         }

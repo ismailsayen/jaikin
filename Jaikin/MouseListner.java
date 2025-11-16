@@ -12,10 +12,10 @@ public class MouseListner implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println(e);
         if (!window.getIsStarted() && e.getButton()==1) {
             Point p = new Point(e.getX(), e.getY());
             window.getPoints().add(p);
+            window.setCurrPoints(window.getPoints());
         }
         window.getFrame().repaint();
     }

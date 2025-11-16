@@ -12,14 +12,14 @@ public class KeyboardListner implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        System.out.println(key);
         switch (key) {
             case 27:
                 window.getFrame().setVisible(false);
                 System.exit(0);
                 break;
             case 10:
-            
+                window.setIsStarted(true);
+                window.getFrame().repaint();
             default:
                 break;
         }

@@ -61,16 +61,23 @@ class Draw extends JPanel {
     public List<Point> chaikinAlgo(List<Point> oldPoints, Point first, Point last) {
         List<Point> newPoints = new ArrayList<>();
         newPoints.add(first);
-
-        for (int i = 0; i < oldPoints.size() - 1; i++) {
+        int len = oldPoints.size()-1;
+        for (int i = 0; i < len ; i++) {
             Point p1 = oldPoints.get(i);
             Point p2 = oldPoints.get(i + 1);
-            int qX = (int) (0.75 * p1.getX() + 0.25 * p2.getX());
-            int qy = (int) (0.75 * p1.getY() + 0.25 * p2.getY());
-            int rX = (int) (0.25 * p1.getX() + 0.75 * p2.getX());
-            int ry = (int) (0.25 * p1.getY() + 0.75 * p2.getY());
-            newPoints.add(new Point(qX, qy));
-            newPoints.add(new Point(rX, ry));
+
+            if (i != 0) {
+                int qX = (int) (0.75 * p1.getX() + 0.25 * p2.getX());
+                int qy = (int) (0.75 * p1.getY() + 0.25 * p2.getY());
+                newPoints.add(new Point(qX, qy));
+            }
+
+            if (i + 1 != len) {
+                int rX = (int) (0.25 * p1.getX() + 0.75 * p2.getX());
+                int ry = (int) (0.25 * p1.getY() + 0.75 * p2.getY());
+                newPoints.add(new Point(rX, ry));
+            }
+
         }
 
         newPoints.add(last);

@@ -1,4 +1,4 @@
-package Jaikin;
+package Jaikin; 
 
 import java.awt.Color;
 import java.awt.Graphics;
